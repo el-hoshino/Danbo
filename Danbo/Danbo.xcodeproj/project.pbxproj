@@ -10,6 +10,7 @@
 		16CC44D81EC30BDA00A48BEE /* Danbo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CC44CE1EC30BDA00A48BEE /* Danbo.framework */; };
 		16CC44DD1EC30BDA00A48BEE /* DanboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CC44DC1EC30BDA00A48BEE /* DanboTests.swift */; };
 		16CC44DF1EC30BDA00A48BEE /* Danbo.h in Headers */ = {isa = PBXBuildFile; fileRef = 16CC44D11EC30BDA00A48BEE /* Danbo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16CC44E91EC30DDB00A48BEE /* CGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CC44E81EC30DDB00A48BEE /* CGAffineTransform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		16CC44D71EC30BDA00A48BEE /* DanboTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanboTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CC44DC1EC30BDA00A48BEE /* DanboTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanboTests.swift; sourceTree = "<group>"; };
 		16CC44DE1EC30BDA00A48BEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16CC44E81EC30DDB00A48BEE /* CGAffineTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAffineTransform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				16CC44D11EC30BDA00A48BEE /* Danbo.h */,
 				16CC44D21EC30BDA00A48BEE /* Info.plist */,
+				16CC44E81EC30DDB00A48BEE /* CGAffineTransform.swift */,
 			);
 			path = Danbo;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 					16CC44CD1EC30BDA00A48BEE = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = KC8N9BMQJY;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					16CC44D61EC30BDA00A48BEE = {
@@ -198,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16CC44E91EC30DDB00A48BEE /* CGAffineTransform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +329,7 @@
 		16CC44E31EC30BDA00A48BEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
@@ -336,6 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.Danbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -343,6 +350,7 @@
 		16CC44E41EC30BDA00A48BEE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
@@ -362,6 +370,7 @@
 		16CC44E61EC30BDA00A48BEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				INFOPLIST_FILE = DanboTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -374,6 +383,7 @@
 		16CC44E71EC30BDA00A48BEE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				INFOPLIST_FILE = DanboTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -402,6 +412,7 @@
 				16CC44E41EC30BDA00A48BEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16CC44E51EC30BDA00A48BEE /* Build configuration list for PBXNativeTarget "DanboTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +421,7 @@
 				16CC44E71EC30BDA00A48BEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
