@@ -16,12 +16,11 @@ view.addSubview(imageView)
 
 
 let rotation: Rotation = .degree(15)
-let yStretching: CGFloat = 1 / cos(rotation.radianValue)
-let yZoom: CGFloat = 1
-let duration: TimeInterval = 0.6
+let duration: TimeInterval = 0.5
 
-func rotate(_ view: UIView, onGroundBy rotation: Rotation, stretching yScale: CGFloat) {
+func rotate(_ view: UIView, onGroundBy rotation: Rotation) {
 	
+	let yScale = 1 / cos(rotation)
 	let oldHeight = view.bounds.height
 	let newHeight = oldHeight * yScale
 	let translationX = newHeight * sin(rotation) / 2
@@ -37,16 +36,25 @@ func rotate(_ view: UIView, onGroundBy rotation: Rotation, stretching yScale: CG
 	
 }
 
+func reset(_ view: UIView) {
+	
+	view.danbo.transform { $0
+		.reset()
+		.commit()
+	}
+	
+}
+
 func loop() {
 	
-	UIView.animateKeyframes(withDuration: 1, delay: 0, options: [.calculationModePaced, .autoreverse, .repeat], animations: {
+	UIView.animateKeyframes(withDuration: duration * 2, delay: 0, options: [.calculationModePaced, .autoreverse, .repeat], animations: {
 		
 		UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
-			rotate(imageView, onGroundBy: 0, stretching: yZoom)
+			reset(imageView)
 		})
 		
 		UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-			rotate(imageView, onGroundBy: rotation, stretching: yStretching)
+			rotate(imageView, onGroundBy: rotation)
 		})
 		
 	}, completion: nil)
@@ -55,8 +63,8 @@ func loop() {
 
 func animate() {
 	
-	UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-		rotate(imageView, onGroundBy: -rotation, stretching: yStretching)
+	UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
+		rotate(imageView, onGroundBy: -rotation)
 	}) { (_) in
 		loop()
 	}
