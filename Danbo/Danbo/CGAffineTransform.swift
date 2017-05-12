@@ -51,3 +51,19 @@ extension CGAffineTransform {
 	}
 	
 }
+
+extension CGAffineTransform {
+	
+	func applying(_ parameter: AffineTransformParameter) -> CGAffineTransform {
+		
+		switch parameter {
+		case .to(let transform):
+			return transform
+			
+		case .by(let transform):
+			return self * transform
+		}
+		
+	}
+	
+}

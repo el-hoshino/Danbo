@@ -49,22 +49,6 @@ extension DanboTransformContainer {
 
 extension DanboTransformContainer {
 	
-	fileprivate func apply(_ parameter: AffineTransformParameter) {
-		
-		switch parameter {
-		case .to(let transform):
-			self.body.transform = transform
-			
-		case .by(let transform):
-			self.body.transform *= transform
-		}
-		
-	}
-	
-}
-
-extension DanboTransformContainer {
-	
 	public func reset() -> DanboTransformContainer {
 		
 		let transform = CGAffineTransform.identity
@@ -107,9 +91,11 @@ extension DanboTransformContainer {
 	
 	public func commit() {
 		
-		self.parameterArray.forEach { (parameter) in
-			self.apply(parameter)
+		let transform = self.parameterArray.reduce(self.body.transform) { (transform, nextParameter) -> CGAffineTransform in
+			return transform.applying(nextParameter)
 		}
+		
+		self.body.transform = transform
 		
 	}
 	
