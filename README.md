@@ -7,3 +7,5 @@
 Danbo is a wrapper framework for CGAffineTransform, including a Playground to test your transforms.
 
 The name **Danbo** is from the nickname of my friend, [ktanaka117](https://github.com/ktanaka117/). This framework is kind of made for him (:P), and that's why I used Method Chaining as an API to make transforms: I personally don't like method chaining syntax very much, but he likes it :).
+
+The `girl.png` image included in Playground was originally downloaded from [here](https://www.ac-illust.com/main/detail.php?id=121046).
