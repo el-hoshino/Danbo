@@ -27,9 +27,10 @@ extension DanboTransformContainer {
 
 extension DanboTransformContainer {
 	
-	private func appending(_ parameter: AffineTransformParameter) -> DanboTransformContainer {
+	fileprivate func setting(to transform: CGAffineTransform) -> DanboTransformContainer {
 		
-		let newParameterArray = self.parameterArray + [parameter]
+		let parameter = AffineTransformParameter.to(transform)
+		let newParameterArray = [parameter]
 		let danbo = DanboTransformContainer(parameterArray: newParameterArray, body: self.body)
 		return danbo
 		
@@ -38,15 +39,8 @@ extension DanboTransformContainer {
 	fileprivate func adding(_ transform: CGAffineTransform) -> DanboTransformContainer {
 		
 		let parameter = AffineTransformParameter.by(transform)
-		let danbo = self.appending(parameter)
-		return danbo
-		
-	}
-	
-	fileprivate func setting(to transform: CGAffineTransform) -> DanboTransformContainer {
-		
-		let parameter = AffineTransformParameter.to(transform)
-		let danbo = self.appending(parameter)
+		let newParameterArray = self.parameterArray + [parameter]
+		let danbo = DanboTransformContainer(parameterArray: newParameterArray, body: self.body)
 		return danbo
 		
 	}
