@@ -34,6 +34,14 @@ extension CGAffineTransform {
 
 extension CGAffineTransform {
 	
+	public func translate(by translation: Translation) -> CGAffineTransform {
+		return self.translatedBy(x: translation.dx, y: translation.dy)
+	}
+	
+}
+
+extension CGAffineTransform {
+	
 	public mutating func translateBy(x: CGFloat, y: CGFloat) {
 		self = self.translatedBy(x: x, y: y)
 	}
@@ -48,6 +56,22 @@ extension CGAffineTransform {
 	
 	public mutating func invert() {
 		self = self.inverted()
+	}
+	
+}
+
+extension CGAffineTransform {
+	
+	func applying(_ parameter: AffineTransformParameter) -> CGAffineTransform {
+		
+		switch parameter {
+		case .to(let transform):
+			return transform
+			
+		case .by(let transform):
+			return self * transform
+		}
+		
 	}
 	
 }

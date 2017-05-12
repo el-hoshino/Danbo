@@ -16,18 +16,18 @@ view.addSubview(imageView)
 
 extension UIView {
 	
-	func rotateOnGround(by angle: CGFloat, stretching yScale: CGFloat) {
+	func rotateOnGround(by rotation: Rotation, stretching yScale: CGFloat) {
 		
 		let oldHeight = self.bounds.height
 		let newHeight = oldHeight * yScale
-		let translationX = newHeight * sin(angle) / 2
-		let translationY = (oldHeight - (newHeight * cos(angle))) / 2
+		let translationX = newHeight * sin(rotation) / 2
+		let translationY = (oldHeight - (newHeight * cos(rotation))) / 2
 		
 		self.danbo.transform { $0
 			.reset()
-			.scale(by: CGVector(dx: 1, dy: yScale))
-			.rotate(by: angle)
-			.translate(by: CGVector(dx: translationX, dy: translationY))
+			.scaleBy(dy: yScale)
+			.rotate(by: rotation)
+			.translateBy(dx: translationX, dy: translationY)
 			.commit()
 		}
 		
@@ -35,15 +35,15 @@ extension UIView {
 	
 }
 
-let angle: CGFloat = .pi / 12
-let yStretching: CGFloat = 1 / cos(angle)
+let rotation: Rotation = .degree(15)
+let yStretching: CGFloat = 1 / cos(rotation.radianValue)
 let yZoom: CGFloat = 1
 let duration: TimeInterval = 0.6
 
 func animate() {
 	
 	UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { 
-		imageView.rotateOnGround(by: -angle, stretching: yStretching)
+		imageView.rotateOnGround(by: -rotation, stretching: yStretching)
 	}) { (_) in
 		loop()
 	}
@@ -59,7 +59,7 @@ func loop() {
 		})
 		
 		UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-			imageView.rotateOnGround(by: angle, stretching: yStretching)
+			imageView.rotateOnGround(by: rotation, stretching: yStretching)
 		})
 		
 	}, completion: nil)
