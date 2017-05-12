@@ -14,6 +14,18 @@ extension CGAffineTransform {
 		return lhs.concatenating(rhs)
 	}
 	
+	public static func *= (lhs: inout CGAffineTransform, rhs: CGAffineTransform) {
+		lhs = lhs * rhs
+	}
+	
+	public static func / (lhs: CGAffineTransform, rhs: CGAffineTransform) -> CGAffineTransform {
+		return lhs.concatenating(rhs.inverted())
+	}
+	
+	public static func /= (lhs: inout CGAffineTransform, rhs: CGAffineTransform) {
+		lhs = lhs / rhs
+	}
+	
 	public static func == (lhs: CGAffineTransform, rhs: CGAffineTransform) -> Bool {
 		return lhs.__equalTo(rhs)
 	}

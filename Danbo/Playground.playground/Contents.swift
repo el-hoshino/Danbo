@@ -23,13 +23,13 @@ extension UIView {
 		let translationX = newHeight * sin(angle) / 2
 		let translationY = (oldHeight - (newHeight * cos(angle))) / 2
 		
-		let identity = CGAffineTransform.identity
-		let translation = identity.translatedBy(x: translationX, y: translationY)
-		let scale = identity.scaledBy(x: 1, y: yScale)
-		let rotation = identity.rotated(by: angle)
-		let transform = scale * rotation * translation
-		
-		self.transform = transform
+		self.danbo.transform { $0
+			.reset()
+			.scale(by: CGVector(dx: 1, dy: yScale))
+			.rotate(by: angle)
+			.translate(by: CGVector(dx: translationX, dy: translationY))
+			.commit()
+		}
 		
 	}
 	
