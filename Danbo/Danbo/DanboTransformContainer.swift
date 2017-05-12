@@ -61,25 +61,25 @@ extension DanboTransformContainer {
 
 extension DanboTransformContainer {
 	
-	public func translate(by vector: CGVector) -> DanboTransformContainer {
+	public func translate(by translation: Translation) -> DanboTransformContainer {
 		
-		let transform = CGAffineTransform(translationX: vector.dx, y: vector.dy)
+		let transform = CGAffineTransform(translationX: translation.dx, y: translation.dy)
 		let danbo = self.adding(transform)
 		return danbo
 		
 	}
 	
-	public func scale(by vector: CGVector) -> DanboTransformContainer {
+	public func scale(by scale: Scale) -> DanboTransformContainer {
 		
-		let transform = CGAffineTransform(scaleX: vector.dx, y: vector.dy)
+		let transform = CGAffineTransform(scaleX: scale.dx, y: scale.dy)
 		let danbo = self.adding(transform)
 		return danbo
 		
 	}
 	
-	public func rotate(by angle: CGFloat) -> DanboTransformContainer {
+	public func rotate(by rotation: Rotation) -> DanboTransformContainer {
 		
-		let transform = CGAffineTransform(rotationAngle: angle)
+		let transform = CGAffineTransform(rotationAngle: rotation.angle)
 		let danbo = self.adding(transform)
 		return danbo
 		

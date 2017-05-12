@@ -34,6 +34,14 @@ extension CGAffineTransform {
 
 extension CGAffineTransform {
 	
+	public func translate(by translation: Translation) -> CGAffineTransform {
+		return self.translatedBy(x: translation.dx, y: translation.dy)
+	}
+	
+}
+
+extension CGAffineTransform {
+	
 	public mutating func translateBy(x: CGFloat, y: CGFloat) {
 		self = self.translatedBy(x: x, y: y)
 	}
