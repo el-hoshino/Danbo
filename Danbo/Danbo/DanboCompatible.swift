@@ -8,11 +8,9 @@
 
 import Foundation
 
-public protocol DanboCompatible: class {
+public protocol DanboCompatible: class, DanboTransformCompatible {
 	
 	var danbo: Danbo { get }
-	
-	var transform: CGAffineTransform { get set }
 	
 }
 
