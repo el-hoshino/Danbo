@@ -25,9 +25,9 @@ extension UIView {
 		
 		self.danbo.transform { $0
 			.reset()
-			.scale(by: .init(dx: 1, dy: yScale))
+			.scaleBy(dy: yScale)
 			.rotate(by: rotation)
-			.translate(by: .init(dx: translationX, dy: translationY))
+			.translateBy(dx: translationX, dy: translationY)
 			.commit()
 		}
 		
