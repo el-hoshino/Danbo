@@ -8,17 +8,23 @@
 
 import Foundation
 
+public protocol DanboTransformCompatible: class {
+	
+	var transform: CGAffineTransform { get set }
+	
+}
+
 public struct DanboTransformContainer {
 	
 	fileprivate var parameterArray: [AffineTransformParameter]
 	
-	fileprivate var body: DanboCompatible
+	fileprivate var body: DanboTransformCompatible
 	
 }
 
 extension DanboTransformContainer {
 	
-	init(body: DanboCompatible) {
+	init(_ body: DanboTransformCompatible) {
 		self.parameterArray = []
 		self.body = body
 	}
@@ -160,3 +166,5 @@ extension DanboTransformContainer {
 	}
 	
 }
+
+extension UIView: DanboTransformCompatible { }
