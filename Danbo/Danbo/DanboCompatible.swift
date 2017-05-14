@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol DanboCompatible: class, DanboTransformCompatible {
+public protocol DanboCompatible: class, DanboAnchorCompatible, DanboTransformCompatible {
 	
 	var danbo: Danbo { get }
 	
@@ -30,9 +30,20 @@ extension Danbo {
 
 extension Danbo {
 	
+	public func anchor(_ anchor: (_ container: DanboAnchorContainer) -> Void) {
+		
+		let container = DanboAnchorContainer(self.body)
+		anchor(container)
+		
+	}
+	
+}
+
+extension Danbo {
+	
 	public func transform(_ transform: (_ container: DanboTransformContainer) -> Void) {
 		
-		let container = DanboTransformContainer(body: self.body)
+		let container = DanboTransformContainer(self.body)
 		transform(container)
 		
 	}

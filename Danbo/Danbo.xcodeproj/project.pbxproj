@@ -18,6 +18,7 @@
 		790179F11EC5EC550081FECD /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790179F01EC5EC550081FECD /* Rotation.swift */; };
 		790179F31EC5EDB70081FECD /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790179F21EC5EDB70081FECD /* Translation.swift */; };
 		790179F51EC5EE1C0081FECD /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790179F41EC5EE1C0081FECD /* Scale.swift */; };
+		7916129A1EC722120028DE3B /* DanboAnchorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791612991EC722120028DE3B /* DanboAnchorContainer.swift */; };
 		79296A611EC5F4B6001B4FD4 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79296A601EC5F4B6001B4FD4 /* CGFloat.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		790179F01EC5EC550081FECD /* Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
 		790179F21EC5EDB70081FECD /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		790179F41EC5EE1C0081FECD /* Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
+		791612991EC722120028DE3B /* DanboAnchorContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DanboAnchorContainer.swift; sourceTree = "<group>"; };
 		79296A601EC5F4B6001B4FD4 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				16CC44E81EC30DDB00A48BEE /* CGAffineTransform.swift */,
 				790179EC1EC5DFC00081FECD /* UIView.swift */,
 				790179E81EC5D9680081FECD /* DanboCompatible.swift */,
+				791612991EC722120028DE3B /* DanboAnchorContainer.swift */,
 				790179EE1EC5E1E50081FECD /* DanboTransformContainer.swift */,
 				790179EA1EC5D9E60081FECD /* AffineTransformParameter.swift */,
 				790179F21EC5EDB70081FECD /* Translation.swift */,
@@ -235,6 +238,7 @@
 				790179EB1EC5D9E60081FECD /* AffineTransformParameter.swift in Sources */,
 				790179F51EC5EE1C0081FECD /* Scale.swift in Sources */,
 				16CC44E91EC30DDB00A48BEE /* CGAffineTransform.swift in Sources */,
+				7916129A1EC722120028DE3B /* DanboAnchorContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

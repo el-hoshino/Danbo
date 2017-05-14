@@ -24,7 +24,7 @@ public struct DanboTransformContainer {
 
 extension DanboTransformContainer {
 	
-	init(body: DanboTransformCompatible) {
+	init(_ body: DanboTransformCompatible) {
 		self.parameterArray = []
 		self.body = body
 	}
@@ -166,3 +166,5 @@ extension DanboTransformContainer {
 	}
 	
 }
+
+extension UIView: DanboTransformCompatible { }
