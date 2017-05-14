@@ -9,9 +9,10 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 PlaygroundPage.current.liveView = view
 
 let image = #imageLiteral(resourceName: "girl.png")
-
 let imageView = UIImageView(image: image)
-imageView.center = CGPoint(x: 240, y: 480)
+
+imageView.danbo.anchor { $0.put(y: 1) }
+imageView.center = CGPoint(x: 240, y: 720)
 view.addSubview(imageView)
 
 
@@ -20,17 +21,12 @@ let duration: TimeInterval = 0.5
 
 func rotate(_ view: UIView, onGroundBy rotation: Rotation) {
 	
-	let yScale = 1 / cos(rotation)
-	let oldHeight = view.bounds.height
-	let newHeight = oldHeight * yScale
-	let translationX = newHeight * sin(rotation) / 2
-	let translationY = (oldHeight - (newHeight * cos(rotation))) / 2
+	let yScale: CGFloat = 1 / cos(rotation)
 	
 	view.danbo.transform { $0
 		.reset()
 		.scaleBy(dy: yScale)
 		.rotate(by: rotation)
-		.translateBy(dx: translationX, dy: translationY)
 		.commit()
 	}
 	
@@ -47,7 +43,7 @@ func reset(_ view: UIView) {
 
 func loop() {
 	
-	UIView.animateKeyframes(withDuration: duration * 2, delay: 0, options: [.calculationModePaced, .autoreverse, .repeat], animations: {
+	UIView.animateKeyframes(withDuration: duration * 2, delay: 0, options: [.calculationModeLinear, .autoreverse, .repeat], animations: {
 		
 		UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
 			reset(imageView)
