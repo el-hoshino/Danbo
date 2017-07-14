@@ -11,7 +11,7 @@ import UIKit
 extension UIView: DanboCompatible {
 	
 	public var danbo: DanboContainer<UIView> {
-		return Danbo(self)
+		return DanboContainer(self)
 	}
 	
 }
