@@ -8,29 +8,31 @@
 
 import Foundation
 
-public protocol DanboCompatible: class, DanboAnchorCompatible, DanboTransformCompatible {
+public protocol DanboCompatible: class {
+	
+	associatedtype Danbo
 	
 	var danbo: Danbo { get }
 	
 }
 
-public struct Danbo {
+public struct DanboContainer<Containee: DanboCompatible> {
 	
-	fileprivate let body: DanboCompatible
+	fileprivate let body: Containee
 	
 }
 
-extension Danbo {
+extension DanboContainer {
 	
-	init(_ body: DanboCompatible) {
+	init(_ body: Containee) {
 		self.body = body
 	}
 	
 }
 
-extension Danbo {
+extension DanboContainer {
 	
-	public func anchor(_ anchor: (_ container: DanboAnchorContainer) -> Void) {
+	public func anchor(_ anchor: (_ container: DanboAnchorContainer<Containee>) -> Void) {
 		
 		let container = DanboAnchorContainer(self.body)
 		anchor(container)
@@ -39,9 +41,9 @@ extension Danbo {
 	
 }
 
-extension Danbo {
+extension DanboContainer {
 	
-	public func transform(_ transform: (_ container: DanboTransformContainer) -> Void) {
+	public func transform(_ transform: (_ container: DanboTransformContainer<Containee>) -> Void) {
 		
 		let container = DanboTransformContainer(self.body)
 		transform(container)

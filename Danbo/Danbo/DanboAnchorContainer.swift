@@ -8,27 +8,21 @@
 
 import Foundation
 
-public protocol DanboAnchorCompatible: class {
+public struct DanboAnchorContainer<Containee: DanboCompatible> {
 	
-	var layer: CALayer { get }
-	
-}
-
-public struct DanboAnchorContainer {
-	
-	fileprivate var body: DanboAnchorCompatible
+	fileprivate var body: Containee
 	
 }
 
 extension DanboAnchorContainer {
 	
-	init(_ body: DanboAnchorCompatible) {
+	init(_ body: Containee) {
 		self.body = body
 	}
 	
 }
 
-extension DanboAnchorContainer {
+extension DanboAnchorContainer where Containee: UIView {
 	
 	public var anchor: CGPoint {
 		return self.body.layer.anchorPoint
@@ -36,7 +30,7 @@ extension DanboAnchorContainer {
 	
 }
 
-extension DanboAnchorContainer {
+extension DanboAnchorContainer where Containee: UIView {
 	
 	public func put(x: CGFloat, y: CGFloat) {
 		
@@ -58,5 +52,3 @@ extension DanboAnchorContainer {
 	}
 	
 }
-
-extension UIView: DanboAnchorCompatible { }
