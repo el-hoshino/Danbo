@@ -10,7 +10,7 @@ import Foundation
 
 public struct DanboAnchorContainer<Containee: DanboCompatible> {
 	
-	fileprivate var body: Containee
+	private let body: Containee
 	
 }
 

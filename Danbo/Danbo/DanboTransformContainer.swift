@@ -10,9 +10,8 @@ import Foundation
 
 public struct DanboTransformContainer<Containee: DanboCompatible> {
 	
-	fileprivate var parameterArray: [AffineTransformParameter]
-	
-	fileprivate var body: Containee
+	private var parameterArray: [AffineTransformParameter]
+	private let body: Containee
 	
 }
 
@@ -27,20 +26,22 @@ extension DanboTransformContainer {
 
 extension DanboTransformContainer where Containee: UIView {
 	
-	fileprivate func setting(to transform: CGAffineTransform) -> DanboTransformContainer {
+	private func setting(to transform: CGAffineTransform) -> DanboTransformContainer {
 		
+		var danbo = self
 		let parameter = AffineTransformParameter.to(transform)
-		let newParameterArray = [parameter]
-		let danbo = DanboTransformContainer(parameterArray: newParameterArray, body: self.body)
+		danbo.parameterArray = [parameter]
+		
 		return danbo
 		
 	}
 	
-	fileprivate func adding(_ transform: CGAffineTransform) -> DanboTransformContainer {
+	private func adding(_ transform: CGAffineTransform) -> DanboTransformContainer {
 		
+		var danbo = self
 		let parameter = AffineTransformParameter.by(transform)
-		let newParameterArray = self.parameterArray + [parameter]
-		let danbo = DanboTransformContainer(parameterArray: newParameterArray, body: self.body)
+		danbo.parameterArray.append(parameter)
+		
 		return danbo
 		
 	}
