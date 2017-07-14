@@ -109,6 +109,14 @@ extension DanboTransformContainer where Containee: UIView {
 		
 	}
 	
+	public func scale(by scale: CGFloat) -> DanboTransformContainer {
+		
+		let transform = CGAffineTransform(scaleX: scale, y: scale)
+		let danbo = self.adding(transform)
+		return danbo
+		
+	}
+	
 	public func scaleBy(dx: CGFloat, dy: CGFloat) -> DanboTransformContainer {
 		
 		let scale = Scale(dx: dx, dy: dy)

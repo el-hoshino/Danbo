@@ -37,7 +37,7 @@ extension DanboSettingContainer {
 
 extension DanboSettingContainer where Containee: UIView {
 	
-	public func anchor(_ anchor: @escaping (DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished) -> DanboSettingContainer {
+	public func setAnchor(to anchor: @escaping (DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished) -> DanboSettingContainer {
 		
 		var danbo = self
 		danbo.anchor = anchor
@@ -50,7 +50,7 @@ extension DanboSettingContainer where Containee: UIView {
 
 extension DanboSettingContainer where Containee: UIView {
 	
-	public func transform(_ transform: @escaping (DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>) -> DanboSettingContainer {
+	public func setTransform(to transform: @escaping (DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>) -> DanboSettingContainer {
 		
 		var danbo = self
 		danbo.transform = transform
