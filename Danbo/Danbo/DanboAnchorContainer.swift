@@ -16,6 +16,14 @@ public struct DanboAnchorContainer<Containee: DanboCompatible> {
 
 extension DanboAnchorContainer {
 	
+	public enum Finished {
+		case success
+	}
+	
+}
+
+extension DanboAnchorContainer {
+	
 	init(_ body: Containee) {
 		self.body = body
 	}
@@ -32,22 +40,28 @@ extension DanboAnchorContainer where Containee: UIView {
 
 extension DanboAnchorContainer where Containee: UIView {
 	
-	public func put(x: CGFloat, y: CGFloat) {
+	public func put(x: CGFloat, y: CGFloat) -> Finished {
 		
 		let anchor = CGPoint(x: x, y: y)
 		self.body.layer.anchorPoint = anchor
 		
+		return .success
+		
 	}
 	
-	public func put(x: CGFloat) {
+	public func put(x: CGFloat) -> Finished {
 		
 		self.body.layer.anchorPoint.x = x
 		
+		return .success
+		
 	}
 	
-	public func put(y: CGFloat) {
+	public func put(y: CGFloat) -> Finished {
 		
 		self.body.layer.anchorPoint.y = y
+		
+		return .success
 		
 	}
 	

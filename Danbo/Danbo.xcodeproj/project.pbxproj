@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1607D3101F1876B70039270C /* DanboSettingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607D30F1F1876B70039270C /* DanboSettingContainer.swift */; };
+		1607D3121F187BC70039270C /* SettingParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607D3111F187BC70039270C /* SettingParameter.swift */; };
 		16CC44D81EC30BDA00A48BEE /* Danbo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CC44CE1EC30BDA00A48BEE /* Danbo.framework */; };
 		16CC44DD1EC30BDA00A48BEE /* DanboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CC44DC1EC30BDA00A48BEE /* DanboTests.swift */; };
 		16CC44DF1EC30BDA00A48BEE /* Danbo.h in Headers */ = {isa = PBXBuildFile; fileRef = 16CC44D11EC30BDA00A48BEE /* Danbo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1607D30F1F1876B70039270C /* DanboSettingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanboSettingContainer.swift; sourceTree = "<group>"; };
+		1607D3111F187BC70039270C /* SettingParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingParameter.swift; sourceTree = "<group>"; };
 		16CC44CE1EC30BDA00A48BEE /* Danbo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Danbo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CC44D11EC30BDA00A48BEE /* Danbo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Danbo.h; sourceTree = "<group>"; };
 		16CC44D21EC30BDA00A48BEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 				16CC44E81EC30DDB00A48BEE /* CGAffineTransform.swift */,
 				790179EC1EC5DFC00081FECD /* UIView.swift */,
 				790179E81EC5D9680081FECD /* DanboCompatible.swift */,
+				1607D30F1F1876B70039270C /* DanboSettingContainer.swift */,
+				1607D3111F187BC70039270C /* SettingParameter.swift */,
 				791612991EC722120028DE3B /* DanboAnchorContainer.swift */,
 				790179EE1EC5E1E50081FECD /* DanboTransformContainer.swift */,
 				790179EA1EC5D9E60081FECD /* AffineTransformParameter.swift */,
@@ -230,12 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1607D3121F187BC70039270C /* SettingParameter.swift in Sources */,
 				79296A611EC5F4B6001B4FD4 /* CGFloat.swift in Sources */,
 				790179ED1EC5DFC00081FECD /* UIView.swift in Sources */,
 				790179F11EC5EC550081FECD /* Rotation.swift in Sources */,
 				790179EF1EC5E1E50081FECD /* DanboTransformContainer.swift in Sources */,
 				790179E91EC5D9680081FECD /* DanboCompatible.swift in Sources */,
 				790179F31EC5EDB70081FECD /* Translation.swift in Sources */,
+				1607D3101F1876B70039270C /* DanboSettingContainer.swift in Sources */,
 				790179EB1EC5D9E60081FECD /* AffineTransformParameter.swift in Sources */,
 				790179F51EC5EE1C0081FECD /* Scale.swift in Sources */,
 				16CC44E91EC30DDB00A48BEE /* CGAffineTransform.swift in Sources */,

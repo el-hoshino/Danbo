@@ -17,6 +17,14 @@ public struct DanboTransformContainer<Containee: DanboCompatible> {
 
 extension DanboTransformContainer {
 	
+	public enum Finished {
+		case success
+	}
+	
+}
+
+extension DanboTransformContainer {
+	
 	init(_ body: Containee) {
 		self.parameterArray = []
 		self.body = body
@@ -150,13 +158,15 @@ extension DanboTransformContainer where Containee: UIView {
 
 extension DanboTransformContainer where Containee: UIView {
 	
-	public func commit() {
+	public func commit() -> Finished {
 		
 		let transform = self.parameterArray.reduce(self.body.transform) { (transform, nextParameter) -> CGAffineTransform in
 			return transform.applying(nextParameter)
 		}
 		
 		self.body.transform = transform
+		
+		return .success
 		
 	}
 	

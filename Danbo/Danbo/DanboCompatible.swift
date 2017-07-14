@@ -32,10 +32,15 @@ extension DanboContainer {
 
 extension DanboContainer {
 	
-	public func anchor(_ anchor: (_ container: DanboAnchorContainer<Containee>) -> Void) {
+	public func set(_ setting: (_ container: DanboSettingContainer<Containee>) -> DanboSettingContainer<Containee>.Finished) {
 		
-		let container = DanboAnchorContainer(self.body)
-		anchor(container)
+		let container = DanboSettingContainer(self.body)
+		let result = setting(container)
+		
+		switch result {
+		case .success:
+			break
+		}
 		
 	}
 	
@@ -43,10 +48,31 @@ extension DanboContainer {
 
 extension DanboContainer {
 	
-	public func transform(_ transform: (_ container: DanboTransformContainer<Containee>) -> Void) {
+	public func anchor(_ anchor: (_ container: DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished) {
+		
+		let container = DanboAnchorContainer(self.body)
+		let result = anchor(container)
+		
+		switch result {
+		case .success:
+			break
+		}
+		
+	}
+	
+}
+
+extension DanboContainer {
+	
+	public func transform(_ transform: (_ container: DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>.Finished) {
 		
 		let container = DanboTransformContainer(self.body)
-		transform(container)
+		let result = transform(container)
+		
+		switch result {
+		case .success:
+			break
+		}
 		
 	}
 	
