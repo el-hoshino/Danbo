@@ -10,8 +10,17 @@ import Foundation
 
 public struct DanboSettingContainer<Containee: DanboCompatible> {
 	
-	private var anchor: ((DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished)?
-	private var transform: ((DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>)?
+	private enum Setting<RawValue, ClosureValue> {
+		case raw(RawValue)
+		case closure(ClosureValue)
+	}
+	
+	private typealias AnchorSetting = Setting<CGPoint, (DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished>
+	
+	private typealias TransformSetting = Setting<CGAffineTransform, (DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>>
+	
+	private var anchor: AnchorSetting?
+	private var transform: TransformSetting?
 	private var alpha: [SettingParameter.Alpha]
 	
 	private let body: Containee
@@ -37,10 +46,19 @@ extension DanboSettingContainer {
 
 extension DanboSettingContainer where Containee: UIView {
 	
-	public func setAnchor(to anchor: @escaping (DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished) -> DanboSettingContainer {
+	public func setAnchor(to anchor: CGPoint) -> DanboSettingContainer {
 		
 		var danbo = self
-		danbo.anchor = anchor
+		danbo.anchor = AnchorSetting.raw(anchor)
+		
+		return danbo
+		
+	}
+	
+	public func setAnchor(by setting: @escaping (DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished) -> DanboSettingContainer {
+		
+		var danbo = self
+		danbo.anchor = AnchorSetting.closure(setting)
 		
 		return danbo
 		
@@ -50,10 +68,19 @@ extension DanboSettingContainer where Containee: UIView {
 
 extension DanboSettingContainer where Containee: UIView {
 	
-	public func setTransform(to transform: @escaping (DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>) -> DanboSettingContainer {
+	public func setTransform(to transform: CGAffineTransform) -> DanboSettingContainer {
 		
 		var danbo = self
-		danbo.transform = transform
+		danbo.transform = TransformSetting.raw(transform)
+		
+		return danbo
+		
+	}
+	
+	public func setTransform(by setting: @escaping (DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>) -> DanboSettingContainer {
+		
+		var danbo = self
+		danbo.transform = TransformSetting.closure(setting)
 		
 		return danbo
 		
@@ -91,13 +118,25 @@ extension DanboSettingContainer where Containee: UIView {
 			return .success
 		}
 		
-		let anchorContainer = DanboAnchorContainer(self.body)
-		let result = anchor(anchorContainer)
+		let result: Finished
 		
-		switch result {
-		case .success:
-			return .success
+		switch anchor {
+		case .raw(let value):
+			self.body.layer.anchorPoint = value
+			result = .success
+			
+		case .closure(let setting):
+			let container = DanboAnchorContainer(self.body)
+			let anchorResult = setting(container)
+			
+			switch anchorResult {
+			case .success:
+				result = .success
+			}
+			
 		}
+		
+		return result
 		
 	}
 	
@@ -107,13 +146,25 @@ extension DanboSettingContainer where Containee: UIView {
 			return .success
 		}
 		
-		let transformContainer = DanboTransformContainer(self.body)
-		let result = transform(transformContainer).commit()
+		let result: Finished
 		
-		switch result {
-		case .success:
-			return .success
+		switch transform {
+		case .raw(let value):
+			self.body.transform = value
+			result = .success
+			
+		case .closure(let setting):
+			let container = DanboTransformContainer(self.body)
+			let transformResult = setting(container).commit()
+			
+			switch transformResult {
+			case .success:
+				result = .success
+			}
+			
 		}
+		
+		return result
 		
 	}
 	
