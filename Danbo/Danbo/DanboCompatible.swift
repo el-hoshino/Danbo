@@ -16,7 +16,7 @@ public protocol DanboCompatible: class, DanboAnchorCompatible, DanboTransformCom
 
 public struct Danbo {
 	
-	fileprivate var body: DanboCompatible
+	fileprivate let body: DanboCompatible
 	
 }
 
