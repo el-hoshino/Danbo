@@ -18,7 +18,7 @@ public protocol DanboCompatible: class {
 
 public struct DanboContainer<Containee: DanboCompatible> {
 	
-	fileprivate let body: Containee
+	private let body: Containee
 	
 }
 
