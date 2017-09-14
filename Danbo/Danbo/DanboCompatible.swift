@@ -62,12 +62,12 @@ extension DanboContainer where Containee: UIView {
 	
 }
 
-extension DanboContainer {
+extension DanboContainer where Containee: UIView {
 	
-	public func transform(_ transform: (_ container: DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>.Finished) {
+	public func transform(_ transform: (_ container: DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>) {
 		
 		let container = DanboTransformContainer(self.body)
-		let result = transform(container)
+		let result = transform(container).commit()
 		
 		switch result {
 		case .success:

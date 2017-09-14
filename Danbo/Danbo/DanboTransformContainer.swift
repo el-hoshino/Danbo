@@ -166,7 +166,7 @@ extension DanboTransformContainer where Containee: UIView {
 
 extension DanboTransformContainer where Containee: UIView {
 	
-	public func commit() -> Finished {
+	func commit() -> Finished {
 		
 		let transform = self.parameterArray.reduce(self.body.transform) { (transform, nextParameter) -> CGAffineTransform in
 			return transform.applying(nextParameter)
