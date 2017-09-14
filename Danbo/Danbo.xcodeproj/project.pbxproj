@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1607D3101F1876B70039270C /* DanboSettingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607D30F1F1876B70039270C /* DanboSettingContainer.swift */; };
+		1607D3121F187BC70039270C /* SettingParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607D3111F187BC70039270C /* SettingParameter.swift */; };
 		16CC44D81EC30BDA00A48BEE /* Danbo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CC44CE1EC30BDA00A48BEE /* Danbo.framework */; };
 		16CC44DD1EC30BDA00A48BEE /* DanboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CC44DC1EC30BDA00A48BEE /* DanboTests.swift */; };
 		16CC44DF1EC30BDA00A48BEE /* Danbo.h in Headers */ = {isa = PBXBuildFile; fileRef = 16CC44D11EC30BDA00A48BEE /* Danbo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1607D30F1F1876B70039270C /* DanboSettingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanboSettingContainer.swift; sourceTree = "<group>"; };
+		1607D3111F187BC70039270C /* SettingParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingParameter.swift; sourceTree = "<group>"; };
 		16CC44CE1EC30BDA00A48BEE /* Danbo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Danbo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CC44D11EC30BDA00A48BEE /* Danbo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Danbo.h; sourceTree = "<group>"; };
 		16CC44D21EC30BDA00A48BEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 				16CC44E81EC30DDB00A48BEE /* CGAffineTransform.swift */,
 				790179EC1EC5DFC00081FECD /* UIView.swift */,
 				790179E81EC5D9680081FECD /* DanboCompatible.swift */,
+				1607D30F1F1876B70039270C /* DanboSettingContainer.swift */,
+				1607D3111F187BC70039270C /* SettingParameter.swift */,
 				791612991EC722120028DE3B /* DanboAnchorContainer.swift */,
 				790179EE1EC5E1E50081FECD /* DanboTransformContainer.swift */,
 				790179EA1EC5D9E60081FECD /* AffineTransformParameter.swift */,
@@ -173,18 +179,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Crazism;
 				TargetAttributes = {
 					16CC44CD1EC30BDA00A48BEE = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = KC8N9BMQJY;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					16CC44D61EC30BDA00A48BEE = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = KC8N9BMQJY;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -229,12 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1607D3121F187BC70039270C /* SettingParameter.swift in Sources */,
 				79296A611EC5F4B6001B4FD4 /* CGFloat.swift in Sources */,
 				790179ED1EC5DFC00081FECD /* UIView.swift in Sources */,
 				790179F11EC5EC550081FECD /* Rotation.swift in Sources */,
 				790179EF1EC5E1E50081FECD /* DanboTransformContainer.swift in Sources */,
 				790179E91EC5D9680081FECD /* DanboCompatible.swift in Sources */,
 				790179F31EC5EDB70081FECD /* Translation.swift in Sources */,
+				1607D3101F1876B70039270C /* DanboSettingContainer.swift in Sources */,
 				790179EB1EC5D9E60081FECD /* AffineTransformParameter.swift in Sources */,
 				790179F51EC5EE1C0081FECD /* Scale.swift in Sources */,
 				16CC44E91EC30DDB00A48BEE /* CGAffineTransform.swift in Sources */,
@@ -271,7 +280,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -279,7 +290,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -325,7 +340,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -333,7 +350,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -380,7 +401,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -401,7 +422,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.Danbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -414,7 +435,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.DanboTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -427,7 +449,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.DanboTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

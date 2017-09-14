@@ -8,43 +8,71 @@
 
 import Foundation
 
-public protocol DanboCompatible: class, DanboAnchorCompatible, DanboTransformCompatible {
+public protocol DanboCompatible: class {
+	
+	associatedtype Danbo
 	
 	var danbo: Danbo { get }
 	
 }
 
-public struct Danbo {
+public struct DanboContainer<Containee: DanboCompatible> {
 	
-	fileprivate let body: DanboCompatible
+	private let body: Containee
 	
 }
 
-extension Danbo {
+extension DanboContainer {
 	
-	init(_ body: DanboCompatible) {
+	init(_ body: Containee) {
 		self.body = body
 	}
 	
 }
 
-extension Danbo {
+extension DanboContainer {
 	
-	public func anchor(_ anchor: (_ container: DanboAnchorContainer) -> Void) {
+	public func set(_ setting: (_ container: DanboSettingContainer<Containee>) -> DanboSettingContainer<Containee>.Finished) {
 		
-		let container = DanboAnchorContainer(self.body)
-		anchor(container)
+		let container = DanboSettingContainer(self.body)
+		let result = setting(container)
+		
+		switch result {
+		case .success:
+			break
+		}
 		
 	}
 	
 }
 
-extension Danbo {
+extension DanboContainer {
 	
-	public func transform(_ transform: (_ container: DanboTransformContainer) -> Void) {
+	public func anchor(_ anchor: (_ container: DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished) {
+		
+		let container = DanboAnchorContainer(self.body)
+		let result = anchor(container)
+		
+		switch result {
+		case .success:
+			break
+		}
+		
+	}
+	
+}
+
+extension DanboContainer {
+	
+	public func transform(_ transform: (_ container: DanboTransformContainer<Containee>) -> DanboTransformContainer<Containee>.Finished) {
 		
 		let container = DanboTransformContainer(self.body)
-		transform(container)
+		let result = transform(container)
+		
+		switch result {
+		case .success:
+			break
+		}
 		
 	}
 	
