@@ -30,12 +30,12 @@ extension DanboContainer {
 	
 }
 
-extension DanboContainer {
+extension DanboContainer where Containee: UIView {
 	
-	public func set(_ setting: (_ container: DanboSettingContainer<Containee>) -> DanboSettingContainer<Containee>.Finished) {
+	public func set(_ setting: (_ container: DanboSettingContainer<Containee>) -> DanboSettingContainer<Containee>) {
 		
 		let container = DanboSettingContainer(self.body)
-		let result = setting(container)
+		let result = setting(container).commit()
 		
 		switch result {
 		case .success:
@@ -46,7 +46,7 @@ extension DanboContainer {
 	
 }
 
-extension DanboContainer {
+extension DanboContainer where Containee: UIView {
 	
 	public func anchor(_ anchor: (_ container: DanboAnchorContainer<Containee>) -> DanboAnchorContainer<Containee>.Finished) {
 		

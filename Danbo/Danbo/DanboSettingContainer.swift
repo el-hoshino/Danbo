@@ -192,7 +192,7 @@ extension DanboSettingContainer where Containee: UIView {
 		
 	}
 	
-	public func commit() -> Finished {
+	func commit() -> Finished {
 		
 		var results: [Finished] = []
 		
