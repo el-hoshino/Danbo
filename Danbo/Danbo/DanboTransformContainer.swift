@@ -8,52 +8,55 @@
 
 import Foundation
 
-public protocol DanboTransformCompatible: class {
+public struct DanboTransformContainer<Containee: DanboCompatible> {
 	
-	var transform: CGAffineTransform { get set }
-	
-}
-
-public struct DanboTransformContainer {
-	
-	fileprivate var parameterArray: [AffineTransformParameter]
-	
-	fileprivate var body: DanboTransformCompatible
+	private var parameterArray: [AffineTransformParameter]
+	private let body: Containee
 	
 }
 
 extension DanboTransformContainer {
 	
-	init(_ body: DanboTransformCompatible) {
+	public enum Finished {
+		case success
+	}
+	
+}
+
+extension DanboTransformContainer {
+	
+	init(_ body: Containee) {
 		self.parameterArray = []
 		self.body = body
 	}
 	
 }
 
-extension DanboTransformContainer {
+extension DanboTransformContainer where Containee: UIView {
 	
-	fileprivate func setting(to transform: CGAffineTransform) -> DanboTransformContainer {
+	private func setting(to transform: CGAffineTransform) -> DanboTransformContainer {
 		
+		var danbo = self
 		let parameter = AffineTransformParameter.to(transform)
-		let newParameterArray = [parameter]
-		let danbo = DanboTransformContainer(parameterArray: newParameterArray, body: self.body)
+		danbo.parameterArray = [parameter]
+		
 		return danbo
 		
 	}
 	
-	fileprivate func adding(_ transform: CGAffineTransform) -> DanboTransformContainer {
+	private func adding(_ transform: CGAffineTransform) -> DanboTransformContainer {
 		
+		var danbo = self
 		let parameter = AffineTransformParameter.by(transform)
-		let newParameterArray = self.parameterArray + [parameter]
-		let danbo = DanboTransformContainer(parameterArray: newParameterArray, body: self.body)
+		danbo.parameterArray.append(parameter)
+		
 		return danbo
 		
 	}
 	
 }
 
-extension DanboTransformContainer {
+extension DanboTransformContainer where Containee: UIView {
 	
 	public func reset() -> DanboTransformContainer {
 		
@@ -65,7 +68,7 @@ extension DanboTransformContainer {
 	
 }
 
-extension DanboTransformContainer {
+extension DanboTransformContainer where Containee: UIView {
 	
 	public func translate(by translation: Translation) -> DanboTransformContainer {
 		
@@ -96,11 +99,19 @@ extension DanboTransformContainer {
 	
 }
 
-extension DanboTransformContainer {
+extension DanboTransformContainer where Containee: UIView {
 	
 	public func scale(by scale: Scale) -> DanboTransformContainer {
 		
 		let transform = CGAffineTransform(scaleX: scale.dx, y: scale.dy)
+		let danbo = self.adding(transform)
+		return danbo
+		
+	}
+	
+	public func scale(by scale: CGFloat) -> DanboTransformContainer {
+		
+		let transform = CGAffineTransform(scaleX: scale, y: scale)
 		let danbo = self.adding(transform)
 		return danbo
 		
@@ -127,7 +138,7 @@ extension DanboTransformContainer {
 	
 }
 
-extension DanboTransformContainer {
+extension DanboTransformContainer where Containee: UIView {
 	
 	public func rotate(by rotation: Rotation) -> DanboTransformContainer {
 		
@@ -153,9 +164,9 @@ extension DanboTransformContainer {
 	
 }
 
-extension DanboTransformContainer {
+extension DanboTransformContainer where Containee: UIView {
 	
-	public func commit() {
+	func commit() -> Finished {
 		
 		let transform = self.parameterArray.reduce(self.body.transform) { (transform, nextParameter) -> CGAffineTransform in
 			return transform.applying(nextParameter)
@@ -163,8 +174,8 @@ extension DanboTransformContainer {
 		
 		self.body.transform = transform
 		
+		return .success
+		
 	}
 	
 }
-
-extension UIView: DanboTransformCompatible { }

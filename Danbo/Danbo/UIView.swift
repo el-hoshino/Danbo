@@ -10,8 +10,8 @@ import UIKit
 
 extension UIView: DanboCompatible {
 	
-	public var danbo: Danbo {
-		return Danbo(self)
+	public var danbo: DanboContainer<UIView> {
+		return DanboContainer(self)
 	}
 	
 }

@@ -20,51 +20,48 @@ let rotation: Rotation = .degree(15)
 let duration: TimeInterval = 0.5
 
 func rotate(_ view: UIView, onGroundBy rotation: Rotation) {
-	
+
 	let yScale: CGFloat = 1 / cos(rotation)
-	
 	view.danbo.transform { $0
 		.reset()
 		.scaleBy(dy: yScale)
 		.rotate(by: rotation)
-		.commit()
 	}
-	
+
 }
 
 func reset(_ view: UIView) {
-	
+
 	view.danbo.transform { $0
 		.reset()
-		.commit()
 	}
-	
+
 }
 
 func loop() {
-	
+
 	UIView.animateKeyframes(withDuration: duration * 2, delay: 0, options: [.calculationModeLinear, .autoreverse, .repeat], animations: {
-		
+
 		UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
 			reset(imageView)
 		})
-		
+
 		UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
 			rotate(imageView, onGroundBy: rotation)
 		})
-		
+
 	}, completion: nil)
-	
+
 }
 
 func animate() {
-	
+
 	UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
 		rotate(imageView, onGroundBy: -rotation)
 	}) { (_) in
 		loop()
 	}
-	
+
 }
 
 
